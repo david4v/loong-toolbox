@@ -12,7 +12,7 @@
 | C Cloudflare CDP | BLOCKED | 缺环境 Secrets，目标出站被拒绝；未创建远程 session，0 张现场截图、0 条目标 Network 记录 |
 | D 同 session 兼容 | BLOCKED | `REA_REMOTE_CDP=BLOCKED`；真实 session 测试 SKIPPED；官方远程地址形态被 REA CLI/MCP 本地校验拒绝 |
 | E RoTerminal 研究 | SKIPPED | 缺现场证据；四份主题文档明确 UNKNOWN 和取证要求，不宣称研究完成 |
-| F 分支与 PR | 待远端交付回执 | 本轮成果提交独立 toolbox 分支；最终 commit/PR 以会话交付链接为准 |
+| F 分支与 PR | PASS（阶段性记录） | 已推送 `research/rea-cloudflare-cdp-pilot` 并创建 [Draft PR #1](https://github.com/david4v/loong-toolbox/pull/1)，未合并；不代表 C/E 验收通过 |
 
 ## 能力矩阵
 

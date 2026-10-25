@@ -1,0 +1,144 @@
+{
+  "collected_date": "2026-10-25",
+  "timezone": "UTC+8",
+  "format": "manually selected command and connector results; no raw network headers or secret values",
+  "probes": [
+    {
+      "command": "node --version",
+      "result": "v24.19.0",
+      "exit_code": 0
+    },
+    {
+      "command": "npm --version",
+      "result": "11.9.0",
+      "exit_code": 0
+    },
+    {
+      "command": "command -v ps",
+      "result": "/usr/bin/ps",
+      "exit_code": 0
+    },
+    {
+      "command": "codex --version",
+      "result": "codex-cli 0.163.0",
+      "exit_code": 0
+    },
+    {
+      "command": "codex mcp list --json",
+      "result": [],
+      "exit_code": 0,
+      "warning": "Could not create PATH aliases: Read-only file system"
+    },
+    {
+      "command": "chromium --version",
+      "result": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+      "exit_code": 0,
+      "limitation": "No page rendering proven"
+    },
+    {
+      "command": "Node spawnSync(process.execPath, [--version])",
+      "tool_network_permission": false,
+      "result": {
+        "status": 0,
+        "error": "spawnSync node EPERM"
+      },
+      "accepted_as_success": false
+    },
+    {
+      "command": "Node spawnSync(process.execPath, [--version])",
+      "tool_network_permission": true,
+      "result": {
+        "status": 0,
+        "stdout": "v24.19.0\n",
+        "error": null
+      },
+      "exit_code": 0
+    },
+    {
+      "command": "curl registry.npmjs.org/rea-agents",
+      "tool_network_permission": false,
+      "exit_code": 7,
+      "error": "Failed to connect to proxy port 8080"
+    },
+    {
+      "command": "curl registry.npmjs.org/rea-agents",
+      "tool_network_permission": true,
+      "exit_code": 0,
+      "origin_http_status": 200,
+      "headers_omitted": true
+    },
+    {
+      "command": "git ls-remote --symref origin HEAD",
+      "tool_network_permission": true,
+      "exit_code": 0,
+      "default_branch": "main",
+      "sha": "d31452d9920ec4bbba8b17cc122f1bba88fcd2e6"
+    },
+    {
+      "command": "curl https://api.cloudflare.com/client/v4/",
+      "tool_network_permission": true,
+      "exit_code": 56,
+      "origin_http_status": null,
+      "curl_http_code": "000",
+      "error": "CONNECT tunnel failed, response 403"
+    },
+    {
+      "command": "curl https://roterminal.co/robots.txt",
+      "tool_network_permission": true,
+      "exit_code": 56,
+      "origin_http_status": null,
+      "curl_http_code": "000",
+      "error": "CONNECT tunnel failed, response 403",
+      "note": "No robots contents received; not a website HTTP 403"
+    },
+    {
+      "command": "gh api repos/david4v/loong-toolbox",
+      "tool_network_permission": true,
+      "exit_code": 1,
+      "error": "Get https://api.github.com/repos/david4v/loong-toolbox: Forbidden"
+    },
+    {
+      "tool": "GitHub get_repo",
+      "repo": "david4v/loong-toolbox",
+      "success": true,
+      "visibility": "public",
+      "default_branch": "main",
+      "push_permission": true
+    },
+    {
+      "tool": "Cloudflare LOONG execute",
+      "operation": "GET /accounts/{account_id}/browser-rendering/devtools/session",
+      "success": false,
+      "error_code": "UNAUTHORIZED",
+      "reason": "Reauthentication required",
+      "missing_operation_scope": "browser-rendering.read",
+      "followup": "Stopped invoking connector after owner reported authentication popups; no reauthentication requested"
+    }
+  ],
+  "secret_presence": {
+    "CLOUDFLARE_API_TOKEN": false,
+    "CLOUDFLARE_ACCOUNT_ID": false
+  },
+  "network_status": {
+    "observations_current": true,
+    "connectivity": "connected",
+    "policy_state": "unknown",
+    "executor_snapshot_mode": "restricted",
+    "vpn_configured": false,
+    "tcp_domains": [],
+    "tcp_ip_ranges": []
+  },
+  "cloudflare_experiment": {
+    "sessions_created": 0,
+    "session_id": null,
+    "screenshots": 0,
+    "network_records": 0,
+    "account_plan": "UNKNOWN",
+    "account_usage": "UNKNOWN"
+  },
+  "site_research": {
+    "target": "https://roterminal.co/?r=all",
+    "status": "SKIPPED",
+    "origin_page_response_observed": false
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "server": {
+    "name": "rea",
+    "version": "6.7.0"
+  },
+  "toolCount": 207,
+  "websiteTools": [
+    {
+      "name": "list_browser_targets",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cdp_endpoint": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Literal loopback CDP endpoint: http://127.0.0.1:PORT, or ws://127.0.0.1:PORT/devtools/browser/ID."
+          },
+          "allowed_origins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "cdp_endpoint"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "examples": [
+          {
+            "cdp_endpoint": "http://127.0.0.1:9222"
+          }
+        ]
+      }
+    },
+    {
+      "name": "inspect_web_page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cdp_endpoint": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Literal loopback CDP endpoint: http://127.0.0.1:PORT, or ws://127.0.0.1:PORT/devtools/browser/ID."
+          },
+          "allowed_origins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "target_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact CDP target identifier selected from the endpoint's target listing."
+          },
+          "observation_ms": {
+            "default": 500,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "include_accessibility_text": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include accessibility text in the result."
+          },
+          "include_console_text": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include console text in the result."
+          },
+          "include_json_body_shapes": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include json body shapes in the result."
+          },
+          "include_websocket_shapes": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include websocket shapes in the result."
+          },
+          "include_storage_keys": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include storage keys in the result."
+          },
+          "include_storage_fingerprints": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include storage fingerprints in the result."
+          },
+          "include_script_sources": {
+            "description": "Whether to include script sources in the result.",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "cdp_endpoint",
+          "target_id"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "description": "Provide a complete input group: cdp_endpoint + target_id + [allowed_origins] + [observation_ms] + [include_accessibility_text] + [include_console_text] + [include_json_body_shapes] + [include_websocket_shapes] + [include_storage_keys] + [include_storage_fingerprints] + [include_script_sources]; cdp_endpoint + target_id + include_script_sources + [allowed_origins] + [observation_ms] + [include_accessibility_text] + [include_console_text] + [include_json_body_shapes] + [include_websocket_shapes] + [include_storage_keys] + [include_storage_fingerprints].",
+        "minProperties": 2,
+        "additionalProperties": false,
+        "examples": [
+          {
+            "cdp_endpoint": "http://127.0.0.1:9222",
+            "target_id": "TARGET_ID_FROM_LIST_BROWSER_TARGETS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "analyze_web_bundle",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cdp_endpoint": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Literal loopback CDP endpoint: http://127.0.0.1:PORT, or ws://127.0.0.1:PORT/devtools/browser/ID."
+          },
+          "allowed_origins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "target_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact CDP target identifier selected from the endpoint's target listing."
+          },
+          "observation_ms": {
+            "default": 500,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "include_accessibility_text": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include accessibility text in the result."
+          },
+          "include_console_text": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include console text in the result."
+          },
+          "include_json_body_shapes": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include json body shapes in the result."
+          },
+          "include_websocket_shapes": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include websocket shapes in the result."
+          },
+          "include_storage_keys": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include storage keys in the result."
+          },
+          "include_storage_fingerprints": {
+            "default": false,
+            "type": "boolean",
+            "description": "Whether to include storage fingerprints in the result."
+          },
+          "include_script_sources": {
+            "default": true,
+            "type": "boolean",
+            "description": "Whether to include script sources in the result."
+          },
+          "fetch_source_maps": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "cdp_endpoint",
+          "target_id"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "examples": [
+          {
+            "cdp_endpoint": "http://127.0.0.1:9222",
+            "target_id": "TARGET_ID_FROM_LIST_BROWSER_TARGETS",
+            "observation_ms": 500,
+            "include_accessibility_text": false,
+            "include_script_sources": true,
+            "include_storage_keys": false,
+            "fetch_source_maps": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "observe_web_session",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cdp_endpoint": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Literal loopback CDP endpoint: http://127.0.0.1:PORT, or ws://127.0.0.1:PORT/devtools/browser/ID."
+          },
+          "allowed_origins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "target_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact CDP target identifier selected from the endpoint's target listing."
+          },
+          "observation_ms": {
+            "default": 10000,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "cdp_endpoint",
+          "target_id"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "examples": [
+          {
+            "cdp_endpoint": "http://127.0.0.1:9222",
+            "target_id": "TARGET_ID_FROM_LIST_BROWSER_TARGETS",
+            "observation_ms": 10000
+          }
+        ]
+      }
+    }
+  ],
+  "validationCalls": [
+    {
+      "name": "list_browser_targets",
+      "arguments": {
+        "cdp_endpoint": "wss://api.cloudflare.com/client/v4/accounts/REDACTED/browser-run/devtools/browser?keep_alive=600000"
+      },
+      "response": {
+        "_meta": {
+          "provenance": {
+            "untrusted_content": true,
+            "source": "analysis_target"
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Input validation error: Invalid arguments for tool list_browser_targets: cdp_endpoint: CDP endpoint must be an explicit-port HTTP URL on 127.0.0.1 or ::1"
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "name": "inspect_web_page",
+      "arguments": {
+        "cdp_endpoint": "wss://api.cloudflare.com/client/v4/accounts/REDACTED/browser-run/devtools/browser?keep_alive=600000",
+        "target_id": "NOT_A_REAL_TARGET"
+      },
+      "response": {
+        "_meta": {
+          "provenance": {
+            "untrusted_content": true,
+            "source": "analysis_target"
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Input validation error: Invalid arguments for tool inspect_web_page: cdp_endpoint: CDP endpoint must be an explicit-port HTTP URL on 127.0.0.1 or ::1"
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "name": "analyze_web_bundle",
+      "arguments": {
+        "cdp_endpoint": "wss://api.cloudflare.com/client/v4/accounts/REDACTED/browser-run/devtools/browser?keep_alive=600000",
+        "target_id": "NOT_A_REAL_TARGET"
+      },
+      "response": {
+        "_meta": {
+          "provenance": {
+            "untrusted_content": true,
+            "source": "analysis_target"
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Input validation error: Invalid arguments for tool analyze_web_bundle: cdp_endpoint: CDP endpoint must be an explicit-port HTTP URL on 127.0.0.1 or ::1"
+          }
+        ],
+        "isError": true
+      }
+    }
+  ]
+}

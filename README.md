@@ -16,3 +16,4 @@ Simple · Efficient · Elegant；Fail early · Fix fast。优先借鉴现成方�
 **状态区分**：VERIFIED_DOCS = 官方文档证实但未实测；CANDIDATE = 待验证；RESEARCH_TARGET = 外部参考网站；INTEGRATED = 已在生产验收（当前无）。
 
 只收录来源链接、原创研究、初步用途、风险和最小实验计划；不镜像第三方源码/敏感数据。任何生产变更另走 loong-os PR。
+- [07 · 语音 AI / Block Dessa](07-voice-ai/Dessa.md) — 等待开放 API/权重并评估成本。

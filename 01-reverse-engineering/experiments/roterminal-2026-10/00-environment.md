@@ -1,72 +1,39 @@
 # 环境验收与本轮交付
 
-执行日期：2026-10-25（UTC+8）。目标仅为 `https://roterminal.co/?r=all`。
-本轮完成环境、REA CLI/stdio MCP 与远程端点校验；**Cloudflare CDP 和 RoTerminal 现场研究尚未通过验收**。
+更新：2026-11-06（UTC+8）。延续 [Draft PR #1](https://github.com/david4v/loong-toolbox/pull/1)，目标仅为公开 RoTerminal 页面及其 Rising 导航。10 月 25 日阻碍记录保留在 Git 历史及原有 evidence 中；以下为本轮实测状态。
 
-## Phase A–F 状态
-
-| 阶段 | 状态 | 实际结果 |
+| 阶段 | 状态 | 本轮结果 |
 | --- | --- | --- |
-| A 环境与规格 | PARTIAL | Node 子进程、npm、Git、浏览器可执行文件和 MCP 传输已测；Cloudflare/目标站出站被拒绝 |
-| B REA 安装验证 | PASS（CLI/独立 stdio） | npm 包 6.7.0 可运行，MCP initialize + tools/list + tools/call 成功传输；全局 Codex 注册未应用 |
-| C Cloudflare CDP | BLOCKED | 缺环境 Secrets，目标出站被拒绝；未创建远程 session，0 张现场截图、0 条目标 Network 记录 |
-| D 同 session 兼容 | BLOCKED | `REA_REMOTE_CDP=BLOCKED`；真实 session 测试 SKIPPED；官方远程地址形态被 REA CLI/MCP 本地校验拒绝 |
-| E RoTerminal 研究 | SKIPPED | 缺现场证据；四份主题文档明确 UNKNOWN 和取证要求，不宣称研究完成 |
-| F 分支与 PR | PASS（阶段性记录） | 已推送 `research/rea-cloudflare-cdp-pilot` 并创建 [Draft PR #1](https://github.com/david4v/loong-toolbox/pull/1)，未合并；不代表 C/E 验收通过 |
+| A / B | 既有验证保留，运行时复核 PASS | 隔离 Node 24.22.1、REA 6.7.0；未修改全局 MCP 注册 |
+| C | 核心 CDP 验收 PASS；账单用量 UNKNOWN | 真实远程 Chromium、example title/readyState/Network、桌面与移动截图、交互及接口摘要；已关闭 |
+| D | BLOCKED | 对同一真实 session 的页面与 bundle 检查均被 REA 端点校验拒绝 |
+| E | 受限研究交付完成 | 四份报告、五张截图、DOM/字段/前端计算证据；服务端算法与部分口径 UNKNOWN |
+| F | PR #1 分支交付 | 更新现有研究分支，保留 draft，不合并；以 GitHub 远端提交读回确认交付 |
 
-## 能力矩阵
+## 密钥和域名是否生效
 
-以下 DIRECT 为本环境实测，证据见 [environment-probes.json](evidence/environment-probes.json)。
+DIRECT：环境状态 observations_current=true，网络策略 enforced。`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 均 ready；Token verify HTTP 200 / active。example.com、roterminal.co HTTP 200；Cloudflare acquire HTTP 200。这证明本次实验所需权限可用，不代表 Token 具备其他账户权限。
 
-| 项目 | 结果与边界 |
-| --- | --- |
-| 工作目录 | `/workspace/loong-toolbox`；开始时工作区干净，基线 `d31452d9920ec4bbba8b17cc122f1bba88fcd2e6` |
-| 原有运行时 | Node 24.19.0、npm 11.9.0；Node 低于 REA 当前 main 文档的 24.22.1 下限 |
-| 隔离运行时 | 在 `/workspace/work/rea-cdp-pilot/runtime` 安装 Node 24.22.1；未替换系统运行时 |
-| 子进程 | 开启工具支持的网络权限后，Node `spawnSync(node, ['--version'])` 无 error、exit 0，输出 v24.19.0 |
-| 进程工具 | `/usr/bin/ps` 可执行 |
-| 本地浏览器 | Chromium 154.0.8037.57 可报告版本；没有据此声称已渲染目标站 |
-| npm | registry 元数据查询、Node 包安装、REA 下载与运行成功 |
-| Codex CLI | 0.163.0；`codex mcp --help` 可用，`codex mcp list --json` 返回 `[]` |
-| MCP | 用官方 `@modelcontextprotocol/client` 2.3.1 启动 REA stdio；服务版本 6.7.0，列出 207 个工具，3 次工具调用返回明确输入错误 |
-| 当前聊天集成 | 独立 MCP 客户端可用不等于工具已加载进本聊天；没有修改全局 Codex 配置 |
-| GitHub | `git ls-remote origin HEAD` 成功；GitHub 连接器确认 toolbox push 权限；shell 的 `gh api` 被网络拒绝，后续使用连接器创建 PR |
-| Cloudflare Secrets | `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 均未设置；只检查存在性，未读取值 |
-| 外网 | 受限制；包仓库与 Git 可达，Cloudflare/目标站不通，不能将“可访问 npm”写成“任意外网可用” |
+工具必须显式启用 `with_additional_permissions.network.enabled=true`；默认沙箱请求无法连接代理或 EPERM。所有成功请求保留继承代理与 CA，TLS 验证未关闭，没有修改网络策略或开放其他域名。未调用 Cloudflare LOONG 连接器。
 
-首次未开启工具网络权限时，curl/Git 无法连接代理，Node 子进程还报告 EPERM；启用受支持的 `with_additional_permissions.network.enabled=true` 后 npm/Git 成功。这是显式的工具权限修正，未绕过代理。后续 Cloudflare/RoTerminal 的错误为 **CONNECT 403、origin HTTP 000**，不是目标网站返回 403，更不构成 anti-bot 证据。
+## 版本、运行方式与能力边界
 
-运行时状态工具报告 observations_current=true、connected，但网络策略 state=unknown；因此不声称策略已确认 enforced。执行器策略快照为 restricted、vpn_configured=false、TCP domain/IP grants 为空。
+系统 Node 24.19.0；实验隔离 Node 24.22.1。Puppeteer 25.16.0、远程 Chrome 152.0.7977.64；完整依赖版本见 [本轮验收 JSON](evidence/cdp-resume-2026-11-06.json)。安装在 `/workspace/work/rea-cdp-resume`，npm cache 同目录；没有安装本地浏览器或原生逆向软件。复用前轮 REA 6.7.0，不把当前 main 文档等同于包行为。
 
-## REA 安装方式与复现
+Playwright 默认 connectOverCDP 在此环境返回 EAI_AGAIN；标准 Node 全局代理设置也没有修复其 socket 路径。显式代理的 ws 握手成功后，采用 Cloudflare 文档支持的 Puppeteer，并通过其公开 ConnectionTransport 接口传递现有 ws 消息。这是进程内传输设置，没有本地监听、转发服务、Worker 或 REA 认证适配。Playwright 路线保持失败记录，没有冒称其已连通。
 
-npm 官方包 `rea-agents@6.7.0` 的 engines 为 `^22.19.0 || ^24.11.0 || >=26.0.0`，比当前 main 的 README 要求宽。采用更严格文档要求，用隔离 Node 24.22.1 执行。包完整性与版本见 [package-metadata.json](evidence/package-metadata.json)。
+本轮有六个顺序执行的短预检 session、两次浏览器取证 session，以及交付探针的一次 example.com 复现 session；同时最多一个，前一个关闭后才创建下一个。初始研究运行约 46 秒，交互补证约 32 秒；预检包括只创建/关闭、Playwright 失败及一次 ws 版本读取。每次显式 DELETE 均返回 200 closed；最终列表为 0 个活动 session。未接近一小时上限。账户月度用量、剩余额度与精确账单 UNKNOWN；活动会话数和墙钟耗时均不能替代计费读数。
 
-本轮实际命令（安装与执行时保留继承的代理和 CA；npm cache 全在工作目录）：
+## 证据与规则
 
-```sh
-npm_config_cache=/workspace/work/rea-cdp-pilot/npm-cache npm view rea-agents version engines repository dist.integrity --json
-npm_config_cache=/workspace/work/rea-cdp-pilot/npm-cache npm install --prefix /workspace/work/rea-cdp-pilot/runtime --no-audit --no-fund node@24.22.1
-PATH=/workspace/work/rea-cdp-pilot/runtime/node_modules/node/bin:$PATH npm_config_cache=/workspace/work/rea-cdp-pilot/npm-cache npx --yes rea-agents@latest setup --help
-PATH=/workspace/work/rea-cdp-pilot/runtime/node_modules/node/bin:$PATH npm_config_cache=/workspace/work/rea-cdp-pilot/npm-cache npx --yes rea-agents@6.7.0 --help
-PATH=/workspace/work/rea-cdp-pilot/runtime/node_modules/node/bin:$PATH npm_config_cache=/workspace/work/rea-cdp-pilot/npm-cache npx --yes rea-agents@6.7.0 setup --client codex --skill=false --dry-run --json
-```
+已阅读 toolbox 交接/REA/治理规则，并只读核对当前 loong-os AGENTS 与工程原则。本轮未修改 loong-os，也没有部署、Actions、生产配置、账单或权限变更。
 
-`@latest` 实际解析到 6.7.0，后续固定该版本。安装仅落在 npm cache，未做全局 npm 安装。帮助实测存在 `--client`、`--dry-run`、`--yes`、`--skill`；只读预览为 `planned`、`appliedActions=[]`，计划新增全局 Codex REA 注册，因此未应用。预览 doctor 的 overall healthy=false 涉及未注册及缺少原生分析引擎，不代表网站 CLI/MCP 不能启动，也不需要安装 Ghidra/Hopper/IDA。高级 schema 参数保持默认。
+[本轮证据索引](evidence/README.md)区分历史记录与新证据。只发布字段结构、选择性的计算后样式、原创计算说明、脚本指纹和公开游戏页面截图；不上传原始 HAR、完整第三方 bundle、cookies、Token、账号 ID、session/socket URL、用户个人信息。
 
-## 规则与权限隔离
+不再要求 owner 重做此前两项设置，它们已生效。剩余技术阻碍是 REA 官方远程端点限制；如需账单精确数值，另需可用的账户用量读入口，但本次没有扩大权限。
 
-已阅读本库 REA.md、REPOSITORY-POLICY.md、交接文件；只读核对 loong-os 当前 AGENTS 和工程原则。规则无影响本任务范围的冲突。私库内容及其内部运行信息未复制到公开成果。
+交付脚本已独立复现成功：[运行结果](evidence/probe-reproduction-2026-11-06.json)。时间编码与时长均值还用自造数据在现场脚本模块上执行断言，均通过；不将测试值当网站真实样本。
 
-loong-os 仅在独立临时目录读取规则，没有编辑、提交、push、部署；Cloudflare 只尝试一次会话列表读取，失败后停止。没有创建 session、Worker、D1、定时任务、Actions，也没有调整费用或账户设置。公开成果仅含工具结果的脱敏摘要、官方来源与原创分析边界。
+## 交付检查
 
-## 最少需要 owner 的操作
-
-1. 在 [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens) 创建实验专用 Token：**Account → Browser Rendering → Edit**（文档写作 `Browser Rendering - Edit`，OpenAPI permission 名为 `Browser Rendering Write`），资源只选目标账号。将 Token 和账号 ID 通过当前 Codex 云环境 Secrets 分别保存为 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`。不要发到聊天或保存进仓库。
-2. 在当前云环境网络设置加入 `api.cloudflare.com`、`roterminal.co`、`example.com`，应用到执行环境。CDP WebSocket 及代理兼容性仍需实测；若实际返回地址要求其他域名，再按明确失败证据最小添加，不开放通配或整网。GitHub 连接器可交付 PR，无需为 shell 增加 api.github.com。
-
-Cloudflare LOONG 连接器读取会话返回 `UNAUTHORIZED` 并触发重新授权窗口。owner 反馈后已停止使用该连接器；不要求重连它，也不申请它所列的一组额外权限。上述专用 Secrets 路线直接遵循交接合同。
-
-授权恢复后从 C 开始：先一个 example.com 会话、验证 title/readyState/截图/Network，再取 RoTerminal 两种 viewport；最后主动关闭 session 并查看用量。总会话数 1、累计 ≤1 小时。**仅补 Token 无法解除 REA 远程端点限制**；D 保持 BLOCKED，C 成功后用官方 Playwright/CDP 完成可行研究。
-
-官方依据集中在 [sources.md](evidence/sources.md)。
+JSON 解析、相对链接、截图文件签名与人工视觉检查、凭据/账号字面值及敏感模式扫描、探针语法与真实复现、计算断言、git diff --check 均通过。检查未触发 GitHub Actions。

@@ -1,6 +1,6 @@
 # 官方来源与版本锚点
 
-核查日期：2026-10-25（UTC+8）。公开网页文档用于规格核对，不能替代本容器运行验收。
+以下主体为 2026-10-25（UTC+8）的历史核查；当时的“本轮未读取”不代表当前状态。2026-11-06 增量核查见末节。公开文档不能替代实际运行。
 
 | 来源 | 使用范围 |
 | --- | --- |
@@ -26,3 +26,11 @@ browser-observation.md 42bae3a979e60ac2094fe7a39a96fb86219ba2104501dae9486e903f1
 ```
 
 Cloudflare LOONG 连接器的 OpenAPI 搜索使用 `/browser-rendering/` 路径，并将权限写作 Browser Rendering Write/Read；当前公开 CDP 文档使用 `/browser-run/`。本轮未成功调用业务端点，因此不推断两个路径可互换，不以旧路径拼出未验证的连接配置。
+
+## 2026-11-06 增量核查
+
+- [Cloudflare Puppeteer CDP](https://developers.cloudflare.com/browser-run/cdp/puppeteer/)、[Playwright CDP](https://developers.cloudflare.com/browser-run/cdp/playwright/)、[MCP](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/)、[session 管理](https://developers.cloudflare.com/browser-run/cdp/session-management/)：以实际响应 socket 为准。本次 browser-run acquire 成功，返回 browser-rendering socket 实际握手成功；不推断所有路径可互换。
+- [Puppeteer ConnectOptions](https://pptr.dev/api/puppeteer.connectoptions)、[ConnectionTransport](https://pptr.dev/api/puppeteer.connectiontransport)：公开进程内传输接口，显式继承出站代理。
+- [Cloudflare session API](https://developers.cloudflare.com/api/resources/browser_rendering/)：列表是活动 session 的观察入口，不是月度账单。
+- [REA browser observation main](https://github.com/morluto/rea/blob/main/docs/browser-observation.md)：本次读取的文档 SHA-256 为 `fcef2ad568b81c0493a911fe3f4eae89a15c85095f90f4dba7b2919a2c347bef`，仍限定 loopback；另用包 6.7.0 对真实远程 session 作负向验收。
+- [RoTerminal](https://roterminal.co/?r=all) / [Rising](https://roterminal.co/rising) / [robots](https://roterminal.co/robots.txt)：已现场读取。页面、少量字段结构与前端计算为直接证据；不主张数据再分发权。完整脚本没有上传，路径/指纹另存。

@@ -1,0 +1,24 @@
+{
+  "started": "2026-11-06T15:33:06.842Z",
+  "network": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/s.js",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "acquire_http": 200,
+  "session_hash": "bb75087bf633",
+  "title": "Example Domain",
+  "readyState": "complete",
+  "cleanup": {
+    "http": 200,
+    "status": "closed"
+  },
+  "finished": "2026-11-06T15:33:10.315Z"
+}

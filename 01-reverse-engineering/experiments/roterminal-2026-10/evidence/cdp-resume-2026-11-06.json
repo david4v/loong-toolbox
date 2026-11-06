@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-06",
+  "configuration": {
+    "observations_current": true,
+    "network_policy": "enforced",
+    "secret": "CLOUDFLARE_API_TOKEN ready; verification HTTP 200 active",
+    "runtime_variable": "CLOUDFLARE_ACCOUNT_ID ready",
+    "host_probes": {
+      "example.com": 200,
+      "roterminal.co": 200,
+      "api.cloudflare.com": 200
+    }
+  },
+  "versions": {
+    "node": "v24.22.1",
+    "puppeteer": "25.16.0",
+    "rea": "6.7.0",
+    "playwright_core": "1.65.0",
+    "ws": "8.22.1",
+    "https_proxy_agent": "9.1.0"
+  },
+  "browser": "Chrome/152.0.7977.64",
+  "runs": [
+    {
+      "started": "2026-11-06T15:24:23.464Z",
+      "finished": "2026-11-06T15:25:09.176Z",
+      "session_hash": "ab74947c309a",
+      "acquire_http": 200,
+      "example": {
+        "title": "Example Domain",
+        "readyState": "complete"
+      },
+      "cleanup": {
+        "status": 200,
+        "data": {
+          "status": "closed"
+        }
+      }
+    },
+    {
+      "started": "2026-11-06T15:26:40.140Z",
+      "finished": "2026-11-06T15:27:12.014Z",
+      "session_hash": "26324ebe4d8d",
+      "acquire_http": 200,
+      "example": {
+        "title": "Example Domain",
+        "readyState": "complete"
+      },
+      "cleanup": {
+        "status": 200,
+        "data": {
+          "status": "closed"
+        }
+      }
+    }
+  ],
+  "rea_same_session": [
+    {
+      "command": "inspect-web-page",
+      "status": 1,
+      "stdout": "{\"error\":\"Browser observation failed\",\"code\":\"invalid_request\",\"category\":\"invalid_input\",\"message\":\"Analysis input is invalid. Check the arguments and try again.\",\"retryable\":true,\"remediation\":{\"action\":\"Correct the listed arguments and retry.\"},\"details\":{\"operation\":\"inspect_web_page\",\"issues\":[{\"path\":[\"cdp_endpoint\"],\"reason\":\"invalid_value\",\"message\":\"CDP endpoint must be an explicit-port HTTP URL on 127.0.0.1 or ::1\"}]}}\n",
+      "stderr": ""
+    },
+    {
+      "command": "analyze-web-bundle",
+      "status": 1,
+      "stdout": "{\"error\":\"Browser observation failed\",\"code\":\"invalid_request\",\"category\":\"invalid_input\",\"message\":\"Analysis input is invalid. Check the arguments and try again.\",\"retryable\":true,\"remediation\":{\"action\":\"Correct the listed arguments and retry.\"},\"details\":{\"operation\":\"analyze_web_bundle\",\"issues\":[{\"path\":[\"cdp_endpoint\"],\"reason\":\"invalid_value\",\"message\":\"CDP endpoint must be an explicit-port HTTP URL on 127.0.0.1 or ::1\"}]}}\n",
+      "stderr": ""
+    }
+  ],
+  "final_cleanup": {
+    "http_status": 200,
+    "active_session_count": 0,
+    "checked_at": "2026-11-06T15:34:17.877235+00:00",
+    "monthly_billable_usage": "UNKNOWN"
+  },
+  "transport": "Puppeteer documented ConnectionTransport over ws with explicit inherited HTTPS_PROXY HttpsProxyAgent; direct authenticated CDP, no listening socket or service. Playwright default connectOverCDP failed EAI_AGAIN.",
+  "preflight": "Six short, sequential diagnostic sessions before the two research runs. Each DELETE returned 200 closed. Concurrent experiment sessions <=1. One-hour cap was not approached; no billing measurement inferred from wall time.",
+  "account_monthly_usage": "UNKNOWN: active-session API is not billing analytics; no authorized dashboard/analytics measurement obtained.",
+  "example_network": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/s.js",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "probe_reproduction": "probe-reproduction-2026-11-06.json",
+  "synthetic_calculation_checks": {
+    "history_delta_decoder": "PASS: times [1000,1600,2200], values [100,120,115]",
+    "trailing_time_weighted_mean": "PASS: linear 100→200 over 3600s gives 150",
+    "method": "Executed exported data Series class from locally inspected artifact using synthetic inputs; no source redistributed."
+  }
+}

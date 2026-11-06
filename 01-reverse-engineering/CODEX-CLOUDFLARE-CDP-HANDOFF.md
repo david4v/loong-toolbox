@@ -1,5 +1,7 @@
 # REA × Codex 云端 × Cloudflare Browser Run：执行交接文档
 
+> **2026-11-06 后续入口：** Owner 已明确 REA 为核心，并允许调整运行位置以复用共享工具。请先读 [REA 共享环境与跨窗口协作](REA-SHARED-RUNTIME-PLAN.md)。本页保留为首轮 Cloudflare 兼容实验合同；其中“必须同一 Cloudflare session”不再约束新路线。原实验失败与证据仍保留，不改写为成功。
+
 **版本**：2026-10-25 v1.0  
 **目标仓库**：`david4v/loong-toolbox`（Public；研究产物与文档）  
 **生产仓库**：`david4v/loong-os`（Private；禁止本任务直接改动）  

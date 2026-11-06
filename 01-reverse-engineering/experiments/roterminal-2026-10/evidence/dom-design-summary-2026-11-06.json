@@ -1,0 +1,62 @@
+{
+  "pages": [
+    {
+      "name": "roterminal-desktop",
+      "title": "RoTerminal · Live player counts for every Roblox game",
+      "readyState": "complete",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440
+      },
+      "canvas_count": 1,
+      "svg_count": 408,
+      "tokens": {
+        "--card-fs-big": "28px",
+        "--ui-gutter": "clamp(32px, 4vw, 72px)",
+        "--ui-s5": "24px",
+        "--bg": "#fff",
+        "--muted": "#8e8e8f",
+        "--font": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", Inter, system-ui, sans-serif",
+        "--down": "#d92d20",
+        "--accent": "#007AFF",
+        "--display": "-apple-system, BlinkMacSystemFont, \"SF Pro Display\", Inter, system-ui, sans-serif",
+        "--up": "#1f8f45",
+        "--fg": "#0a0a0b",
+        "--ui-gap": "80px"
+      }
+    },
+    {
+      "name": "roterminal-mobile",
+      "title": "RoTerminal · Live player counts for every Roblox game",
+      "readyState": "complete",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390
+      },
+      "canvas_count": 1,
+      "svg_count": 406,
+      "tokens": {
+        "--card-fs-big": "24px",
+        "--ui-gutter": "max(20px, 0px, 0px)",
+        "--ui-s5": "24px",
+        "--bg": "#fff",
+        "--muted": "#8e8e8f",
+        "--font": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", Inter, system-ui, sans-serif",
+        "--down": "#d92d20",
+        "--accent": "#007AFF",
+        "--display": "-apple-system, BlinkMacSystemFont, \"SF Pro Display\", Inter, system-ui, sans-serif",
+        "--up": "#1f8f45",
+        "--fg": "#0a0a0b",
+        "--ui-gap": "80px"
+      }
+    }
+  ],
+  "interaction": {
+    "range": "1D → 1W; visibly different curve and selected pill",
+    "navigation": "Overview → /rising; title and list changed",
+    "rising_note": "Games of 1,000+ players that grew the most this week.",
+    "caution": "The mobile 1W control has incomplete text in the captured viewport. No claim of flawless responsive rendering."
+  }
+}

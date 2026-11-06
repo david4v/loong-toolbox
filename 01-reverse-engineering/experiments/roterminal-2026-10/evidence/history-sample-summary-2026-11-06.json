@@ -1,0 +1,22 @@
+{
+  "http_status": 200,
+  "points": 2159,
+  "delta_count": 2159,
+  "step_seconds_top": [
+    [
+      600,
+      2157
+    ],
+    [
+      1800,
+      1
+    ]
+  ],
+  "step_min": 600,
+  "step_max": 1800,
+  "step_median": 600.0,
+  "decoded_last_timestamp": 1793978100,
+  "live_tuple_lengths": [
+    2
+  ]
+}

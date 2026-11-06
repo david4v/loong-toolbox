@@ -1,7 +1,10 @@
 # REA — Reverse Engineer Anything
 
-**状态：VERIFIED_DOCS；P1**  
+**状态：NATIVE_SMOKE_PASS（自造页）；SHARED_RUNTIME_PLANNED；P1**
+
 官方：https://rea.tools/  源码：https://github.com/morluto/rea
+
+后续入口：[共享研究环境与跨窗口协作](REA-SHARED-RUNTIME-PLAN.md)。同机页面与 bundle 小样本已通过；Hetzner 部署及真实网站原生 REA 验收尚未通过。Cloudflare 远程兼容仍 BLOCKED。
 
 ## 能力
 用于 Codex 等编程代理的 MCP/CLI 逆向分析；可通过浏览器 CDP 观察网页 JavaScript、网络请求、模块和运行行为，也支持 Electron 和二进制分析。官方安装示例：`npx rea-agents@latest setup`。

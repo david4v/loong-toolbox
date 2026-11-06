@@ -1,0 +1,22 @@
+{
+  "error": "Browser observation failed",
+  "code": "invalid_request",
+  "category": "invalid_input",
+  "message": "Analysis input is invalid. Check the arguments and try again.",
+  "retryable": true,
+  "remediation": {
+    "action": "Correct the listed arguments and retry."
+  },
+  "details": {
+    "operation": "list_browser_targets",
+    "issues": [
+      {
+        "path": [
+          "cdp_endpoint"
+        ],
+        "reason": "invalid_value",
+        "message": "CDP endpoint must be an explicit-port HTTP URL on 127.0.0.1 or ::1"
+      }
+    ]
+  }
+}

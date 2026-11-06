@@ -1,0 +1,21 @@
+{
+  "collected_date": "2026-10-25",
+  "evidence_level": "DIRECT",
+  "registry": "https://registry.npmjs.org/rea-agents",
+  "name": "rea-agents",
+  "latest_at_probe": "6.7.0",
+  "installed_version": "6.7.0",
+  "engines": {
+    "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
+  },
+  "repository": "git+https://github.com/morluto/rea.git",
+  "dist_integrity": "sha512-yhIx2ioJYYT1C/tONfYeitC6LhnKmCh+ZwRUOgYuhSc733lGhkkt73zhug9WmLgxoMdKuqIYGCoBfD4fXkOhFw==",
+  "isolated_node": "24.22.1",
+  "mcp_client_installed": "2.3.1",
+  "rea_dependency_playwright_core": "1.58.2",
+  "other_registry_metadata_only": {
+    "chrome-devtools-mcp": "1.12.0",
+    "playwright-core": "1.64.1"
+  },
+  "note": "Other registry metadata does not establish installation. No native reverse engineering engine installed."
+}

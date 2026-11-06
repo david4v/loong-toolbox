@@ -18,4 +18,5 @@ Simple · Efficient · Elegant；Fail early · Fix fast。优先借鉴现成方�
 只收录来源链接、原创研究、初步用途、风险和最小实验计划；不镜像第三方源码/敏感数据。任何生产变更另走 loong-os PR。
 - [07 · 语音 AI / Block Dessa](07-voice-ai/Dessa.md) — 等待开放 API/权重并评估成本。
 
-- [REA × Codex 云端 × Cloudflare Browser Run 执行交接](01-reverse-engineering/CODEX-CLOUDFLARE-CDP-HANDOFF.md)
+- [REA 共享研究环境与跨窗口协作（当前入口）](01-reverse-engineering/REA-SHARED-RUNTIME-PLAN.md)
+- [REA × Codex 云端 × Cloudflare Browser Run 执行交接（首轮历史）](01-reverse-engineering/CODEX-CLOUDFLARE-CDP-HANDOFF.md)

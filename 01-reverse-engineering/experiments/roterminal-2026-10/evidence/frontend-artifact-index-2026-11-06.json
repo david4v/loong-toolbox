@@ -1,0 +1,35 @@
+{
+  "source": "Public scripts delivered during the initial browser navigation; inspected locally only. No bundle content redistributed.",
+  "artifacts": [
+    {
+      "path": "/assets/roblox-lines-ZzMzJ0SR.js",
+      "sha256": "4c0cb088b391fbe020da7bea6275acaa096c7aba48537b4ad564cc33376f16be",
+      "bytes": 4789
+    },
+    {
+      "path": "/assets/data-PGWq_k9Z.js",
+      "sha256": "ba6ccfda2ae251f047670909e9ad2a4490bd464e6807493bb88905f2bad9c680",
+      "bytes": 9091
+    },
+    {
+      "path": "/assets/history-CqDCQi47.js",
+      "sha256": "3a8cef763752c75d1e614d157eb1cac361f33303cbc2470e0edffbf0006de8fd",
+      "bytes": 605
+    },
+    {
+      "path": "/assets/chart-ranges-CHvGMJca.js",
+      "sha256": "02975b4b632ac954d3402a7b0b922a78a376e74977176bc488835cf839b440a3",
+      "bytes": 1140
+    },
+    {
+      "path": "/assets/chart-nEVwqgAT.js",
+      "sha256": "ad17a431f52428bf203678e0748d74620f5f03302da8e18b4d1e93d6125e9d49",
+      "bytes": 63878
+    },
+    {
+      "path": "/assets/discover-CC4-F9NX.js",
+      "sha256": "f0386314e1ac8fca1663d89777d7b48f2e43d95e556aa32dd0c89a2afb2f14dd",
+      "bytes": 26073
+    }
+  ]
+}

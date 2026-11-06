@@ -1,0 +1,28 @@
+{
+  "status": "planned",
+  "plannedActions": [
+    {
+      "id": "configure_client:codex",
+      "kind": "configure_client",
+      "operation": "create",
+      "target": "GLOBAL_CODEX_CONFIG (path omitted)",
+      "external": false
+    }
+  ],
+  "appliedActions": [],
+  "doctor": {
+    "healthy": false,
+    "environment_healthy": false,
+    "scope": {
+      "mode": "explicit",
+      "clients": [
+        "codex"
+      ],
+      "providers": [],
+      "skill": false,
+      "target": null
+    }
+  },
+  "registration_applied": false,
+  "note": "Global registration is a plan only. Original dry-run output remains outside the public repository."
+}

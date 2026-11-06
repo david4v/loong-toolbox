@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-06",
+  "scope": "Native REA 6.7.0 and Chromium on the same Codex execution host, self-authored HTTP fixture only. Not a Hetzner deployment or RoTerminal acceptance.",
+  "runtime": "Node 24.22.1",
+  "browser": "Chrome/154.0.8037.57",
+  "discovery_exit": 0,
+  "inspect": {
+    "exit": 0,
+    "provider": "rea-cdp-browser",
+    "title": "REA fixture",
+    "completeness": "policy_filtered",
+    "limitations": "Default capture policy filters optional text/source sections; earlier network activity is attach-limited."
+  },
+  "bundle": {
+    "exit": 0,
+    "scripts_observed": 1,
+    "scripts_analyzed": 1,
+    "parsed_scripts": 1,
+    "parse_failures": 0
+  },
+  "cleanup": "Fixture server and browser closed in finally.",
+  "https_followup": "Native Chromium HTTPS example navigation failed ERR_CERT_AUTHORITY_INVALID with current environment proxy. TLS verification was not disabled; real-site native acceptance is pending."
+}

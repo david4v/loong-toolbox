@@ -2,6 +2,8 @@
 
 2026-11-06 增量证据：
 
+- [REA 同机原生模式小样本](rea-native-smoke-2026-11-06.json)：自造页面通过；不是 Hetzner/真实网站部署验收。
+
 - [CDP/环境/REA 同会话/关闭记录](cdp-resume-2026-11-06.json)
 - [选择性网络字段与缓存摘要](network-summary-2026-11-06.json)
 - [DOM、少量样式与交互摘要](dom-design-summary-2026-11-06.json)
